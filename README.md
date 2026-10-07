@@ -18,6 +18,8 @@ GitHub Pages is configured to deploy from the `main` branch at `/`. Push changes
 
 ## Menu and imagery
 
-39 entries and supplied menu prices. Product visuals are AI-enhanced recreations of supplied burger images and AI-generated illustrations for sandwiches, sides and sauces, labeled in the UI. Optimized WebP sheets are under assets/enhanced; SVG windows display individual products. Original source scans remain archived in assets/menu but the original-menu gallery and its dialog have been removed at the owner's request. No ordering/payment backend is implemented.
+39 entries and supplied menu prices. Product visuals are AI-enhanced recreations of supplied burger images and AI-generated illustrations for sandwiches, sides and sauces, with per-image captions removed at the owner’s request. Optimized WebP sheets are under assets/enhanced; SVG windows display individual products. Original source scans remain archived in assets/menu but the original-menu gallery and its dialog have been removed at the owner's request. No ordering/payment backend is implemented.
 
 Validated 1440, 768, 390 and 320px layouts, navigation and Escape, FAQ, clipboard, category/search filters, empty state, prices, images for all 39 entries, and absence of the original-menu section. All four new image assets load without errors.
+
+Social cards intentionally contain no food imagery. Sandwich visuals use soft elongated sesame rolls. Product image sheets use white margins to isolate each product.
