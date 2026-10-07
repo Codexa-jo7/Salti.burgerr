@@ -14,7 +14,7 @@ The page uses local assets and vanilla CSS/JavaScript. Mobile navigation, FAQ ac
 
 ## Publication
 
-Push to `main`, then select **GitHub Actions** under repository **Settings → Pages**. The included workflow publishes only the website files. Deployment is successful only when the Pages workflow succeeds and the published URL responds.
+GitHub Pages is configured to deploy from the `main` branch at `/`. Push changes to `main` to publish. `.nojekyll` serves the static website directly. No custom domain or paid domain is required. The optional manual Actions workflow requires switching Pages to GitHub Actions before use. Deployment is successful only when the Pages build succeeds and the published URL responds.
 
 ## Content awaiting verification
 
