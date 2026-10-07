@@ -18,6 +18,6 @@ GitHub Pages is configured to deploy from the `main` branch at `/`. Push changes
 
 ## Menu and imagery
 
-39 entries and prices transcribed from six original restaurant menu pages supplied by the owner. Ten Drive links were downloaded successfully; four were byte-identical duplicates. Original WebP files are retained under assets/menu. SVG display windows isolate food photographs without altering source files, hiding surrounding text and borders in product cards. A keyboard-accessible dialog displays each full original menu page. Confirm current prices and allergen details with the restaurant. No ordering/payment backend is implemented.
+39 entries and supplied menu prices. Product visuals are AI-enhanced recreations of supplied burger images and AI-generated illustrations for sandwiches, sides and sauces, labeled in the UI. Optimized WebP sheets are under assets/enhanced; SVG windows display individual products. Original source scans remain archived in assets/menu but the original-menu gallery and its dialog have been removed at the owner's request. No ordering/payment backend is implemented.
 
-Validated desktop and mobile layouts (1440, 768, 390, 320px), navigation and Escape, FAQ, clipboard, category/search filters, empty state, menu prices, all six full-resolution images and the dialog.
+Validated 1440, 768, 390 and 320px layouts, navigation and Escape, FAQ, clipboard, category/search filters, empty state, prices, images for all 39 entries, and absence of the original-menu section. All four new image assets load without errors.

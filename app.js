@@ -17,7 +17,12 @@ const foodPhotos = {"كلاسيك بيف": ["beef-1", "350 300 190 175"], "زو�
 let photoClipId=0;
 function clipPhoto(svg){const ns='http://www.w3.org/2000/svg';const [x,y,width,height]=svg.getAttribute('viewBox').split(' ');const clip=document.createElementNS(ns,'clipPath');clip.id='food-clip-'+(++photoClipId);const rect=document.createElementNS(ns,'rect');for(const [key,value] of Object.entries({x,y,width,height}))rect.setAttribute(key,value);clip.append(rect);const defs=document.createElementNS(ns,'defs');defs.append(clip);svg.prepend(defs);svg.querySelector('image').setAttribute('clip-path','url(#'+clip.id+')');}
 document.querySelectorAll('svg.food-photo').forEach(clipPhoto);
-function foodPhoto(name) {const data=foodPhotos[name];if(!data)return null; const ns='http://www.w3.org/2000/svg';const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox',data[1]);svg.setAttribute('class','food-photo');svg.setAttribute('role','img');svg.setAttribute('aria-label',name+' — صورة من منيو المطعم');const img=document.createElementNS(ns,'image');img.setAttribute('href','assets/menu/'+data[0]+'.webp');img.setAttribute('width','640');img.setAttribute('height','1138');svg.append(img);clipPhoto(svg);return svg;}
+const enhancedPhotos = {"زومبي بيف": ["beef", 2, 0], "كلاسيك بيف": ["beef", 2, 1], "سموك بيف": ["beef", 2, 2], "ايلاند بيف": ["beef", 2, 3], "وايت مشروم بيف": ["burgers", 4, 0], "سلطي برغر بيف": ["burgers", 4, 1], "باربيكيو بيف": ["burgers", 4, 2], "تشيز برغر بيف": ["burgers", 4, 3], "مايتي كرسبي": ["burgers", 4, 4], "جولد كرسبي": ["burgers", 4, 5], "كلاسيك تشكن": ["burgers", 4, 6], "سلطي برغر تشكن": ["burgers", 4, 7], "زومبي تشكن": ["burgers", 4, 8], "باربيكيو تشكن": ["burgers", 4, 9], "وايت مشروم تشكن": ["burgers", 4, 10], "تشيز برغر تشكن": ["burgers", 4, 11], "سموك تشكن": ["burgers", 4, 12], "هوت دوغ": ["extras", 4, 0], "زنجر": ["extras", 4, 1], "ستربس": ["extras", 4, 2], "sandwich:بطاطا": ["extras", 4, 3], "سلطي شيش": ["extras", 4, 4], "كيرلي": ["extras", 4, 5], "ويجز": ["extras", 4, 6], "sides:بطاطا": ["extras", 4, 7], "ناجتس — 8 قطع": ["extras", 4, 8], "تشيكن فرايز": ["extras", 4, 9], "أصابع موزريلا — 4 قطع": ["extras", 4, 10], "حلقات البصل — 8 قطع": ["extras", 4, 11], "زنجر بوكس": ["extras", 4, 12], "سلطة السيزر عادي": ["extras", 4, 13], "سلطة السيزر مع دجاج": ["extras", 4, 14], "سلطي": ["sauces", 3, 0], "بافلو": ["sauces", 3, 1], "هني ماسترد": ["sauces", 3, 2], "تشلي": ["sauces", 3, 3], "غارلك بارميزان": ["sauces", 3, 4], "BBQ": ["sauces", 3, 5], "وايت صوص": ["sauces", 3, 6]};
+function foodPhoto(item) {
+ const name=item.name;const data=enhancedPhotos[item.category+':'+name]||enhancedPhotos[name];if(!data)return null;
+ const [file,grid,index]=data;const w=file==='burgers'?1448:1254;const h=file==='burgers'?1086:1254;const cw=w/grid;const ch=h/grid;const x=(index%grid)*cw;const y=Math.floor(index/grid)*ch;
+ const ns='http://www.w3.org/2000/svg';const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox',[x,y,cw,ch].join(' '));svg.setAttribute('class','food-photo enhanced-photo');svg.setAttribute('role','img');svg.setAttribute('aria-label',name+' — صورة توضيحية بالذكاء الاصطناعي');const img=document.createElementNS(ns,'image');img.setAttribute('href','assets/enhanced/'+file+'.webp');img.setAttribute('width',String(w));img.setAttribute('height',String(h));svg.append(img);clipPhoto(svg);if(file==='extras'){const rect=svg.querySelector('clipPath rect');rect.setAttribute('height',String(ch-12));}return svg;
+}
 const labels = {beef:'برغر لحم',chicken:'برغر دجاج',sandwich:'ساندويش',sides:'مقبلات',sauce:'صوصات'};
 let activeCategory = 'all';
 const searchInput = document.querySelector('#menu-search');
@@ -31,7 +36,7 @@ function renderMenu() {
   const title = document.createElement('h3'); title.textContent = item.name;
   const prices = document.createElement('dl');
   item.variants.forEach(([label,price]) => {const row=document.createElement('div');const dt=document.createElement('dt');dt.textContent=label;const dd=document.createElement('dd');dd.textContent=price.toFixed(2)+' د.أ';row.append(dt,dd);prices.append(row);});
-  const photo=foodPhoto(item.name);if(photo)card.append(photo);card.append(tag,title,prices); return card;
+  const photo=foodPhoto(item);if(photo){card.append(photo);const caption=document.createElement("small");caption.className="image-note";caption.textContent=(item.category==="beef"||item.category==="chicken")?"صورة محسّنة بالذكاء الاصطناعي":"صورة توضيحية مولّدة";card.append(caption);}card.append(tag,title,prices); return card;
  }));
  document.querySelector('#menu-count').textContent = filtered.length + ' صنف';
  document.querySelector('#menu-empty').hidden = filtered.length !== 0;
@@ -43,8 +48,3 @@ document.querySelectorAll('[data-category]').forEach(button => button.addEventLi
 }));
 searchInput.addEventListener('input',renderMenu);
 renderMenu();
-
-const photoDialog=document.querySelector('#photo-dialog');
-document.querySelectorAll('.menu-page').forEach(button=>button.addEventListener('click',()=>{document.querySelector('#full-photo').src=button.dataset.image;document.querySelector('#full-photo').alt=button.dataset.title;document.querySelector('#photo-title').textContent=button.dataset.title;photoDialog.showModal();}));
-document.querySelector('#close-photo').addEventListener('click',()=>photoDialog.close());
-photoDialog.addEventListener('click',event=>{if(event.target===photoDialog)photoDialog.close();});
