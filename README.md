@@ -16,6 +16,10 @@ The page uses local assets and vanilla CSS/JavaScript. Mobile navigation, FAQ ac
 
 GitHub Pages is configured to deploy from the `main` branch at `/`. Push changes to `main` to publish. `.nojekyll` serves the static website directly. No custom domain or paid domain is required. The optional manual Actions workflow requires switching Pages to GitHub Actions before use. Deployment is successful only when the Pages build succeeds and the published URL responds.
 
-## Content awaiting verification
+## Menu and imagery
 
-The supplied Drive folder redirects to Google sign-in and requires public sharing or uploaded images. The burger artwork is an original SVG illustration, explicitly labeled on the site, not a restaurant photo. Replace it and adjust the palette after obtaining the restaurant photos. No unverified prices, menu items, opening hours, phone numbers, delivery service, customer reviews, or ratings are advertised. The restaurant's social pages provide the menu information. Map artwork is illustrative; the destination is the supplied Maps link. Verify external links before commercial handover. No ordering/payment backend is implemented.
+The red/white/black design and 35 menu entries were transcribed from the restaurant menu images supplied in chat. Prices are in JOD, with burger/double/meal/double-meal options where shown. Category filtering and search work locally without a backend. Confirm current prices and allergen information with the restaurant.
+
+The attached images are visible in the conversation but their original file bytes were not delivered to this cloud workspace (only Windows E: paths were supplied). The Drive folder still requires sign-in. Original food photos therefore await a downloadable ZIP/upload; the site currently uses typography instead of the old burger illustration. No opening hours, phone numbers, customer reviews, or ordering/payment service are fabricated.
+
+Validated at 1440, 768, 390 and 320px: layout without horizontal overflow, navigation, Escape, FAQ, clipboard, all 35 menu items, category/search filtering, empty state, and sample menu prices.
