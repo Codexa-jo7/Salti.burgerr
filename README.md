@@ -18,8 +18,6 @@ GitHub Pages is configured to deploy from the `main` branch at `/`. Push changes
 
 ## Menu and imagery
 
-The red/white/black design and 35 menu entries were transcribed from the restaurant menu images supplied in chat. Prices are in JOD, with burger/double/meal/double-meal options where shown. Category filtering and search work locally without a backend. Confirm current prices and allergen information with the restaurant.
+39 entries and prices transcribed from six original restaurant menu pages supplied by the owner. Ten Drive links were downloaded successfully; four were byte-identical duplicates. Original WebP files are retained under assets/menu. SVG display windows isolate food photographs without altering source files, hiding surrounding text and borders in product cards. A keyboard-accessible dialog displays each full original menu page. Confirm current prices and allergen details with the restaurant. No ordering/payment backend is implemented.
 
-The attached images are visible in the conversation but their original file bytes were not delivered to this cloud workspace (only Windows E: paths were supplied). The Drive folder still requires sign-in. Original food photos therefore await a downloadable ZIP/upload; the site currently uses typography instead of the old burger illustration. No opening hours, phone numbers, customer reviews, or ordering/payment service are fabricated.
-
-Validated at 1440, 768, 390 and 320px: layout without horizontal overflow, navigation, Escape, FAQ, clipboard, all 35 menu items, category/search filtering, empty state, and sample menu prices.
+Validated desktop and mobile layouts (1440, 768, 390, 320px), navigation and Escape, FAQ, clipboard, category/search filters, empty state, menu prices, all six full-resolution images and the dialog.
